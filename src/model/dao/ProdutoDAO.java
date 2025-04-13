@@ -60,4 +60,52 @@ public class ProdutoDAO {
 
         return lista;
     }
+
+    public void atualizarProduto(Produto p) {
+        try {
+            Connection conn = Conexao.getConexao();
+            String sql = "UPDATE produto SET codigo = ?, nome = ?, descricao = ?, preco = ?, quantidade = ? WHERE id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+    
+            stmt.setString(1, p.getCodigo());
+            stmt.setString(2, p.getNome());
+            stmt.setString(3, p.getDescricao());
+            stmt.setDouble(4, p.getPreco());
+            stmt.setInt(5, p.getQuantidade());
+            stmt.setInt(6, p.getId());
+    
+            int resultado = stmt.executeUpdate();
+    
+            if (resultado > 0) {
+                System.out.println("Produto atualizado com sucesso!");
+            } else {
+                System.out.println("Produto não encontrado.");
+            }
+    
+        } catch (SQLException e) {
+            System.out.println("Erro ao atualizar produto: " + e.getMessage());
+        }
+    }
+
+    public void deletarProduto(int id) {
+        try {
+            Connection conn = Conexao.getConexao();
+            String sql = "DELETE FROM produto WHERE id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+    
+            stmt.setInt(1, id);
+    
+            int resultado = stmt.executeUpdate();
+    
+            if (resultado > 0) {
+                System.out.println("Produto deletado com sucesso!");
+            } else {
+                System.out.println("Produto não encontrado com o ID: " + id);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao deletar produto: " + e.getMessage());
+        }
+    }
+    
+    
 }

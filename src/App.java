@@ -23,5 +23,13 @@ public class App {
             System.out.println("Quantidade: " + p.getQuantidade());
             System.out.println("----------------------------");
         }
+
+        Produto p = new Produto();
+        p.setNome("Henrique");
+        p.setCodigo("234");
+        p.setId(1);
+        dao.atualizarProduto(p);
+
+        
     }
 }
