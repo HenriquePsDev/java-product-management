@@ -14,10 +14,10 @@ public class Conexao {
         try {
             if (conn == null || conn.isClosed()) {
                 conn = DriverManager.getConnection(url, user, password);
-                System.out.println("Conexão estabelecida com sucesso!");
+                System.out.println("\nConexão estabelecida com sucesso!\n");
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao fazer conexão: " + e.getMessage());
+            System.out.println("\nErro ao fazer conexão: " + e.getMessage());
         }
         return conn;
     }
@@ -26,10 +26,10 @@ public class Conexao {
         try {
             if (conn != null && !conn.isClosed()) {
                 conn.close();
-                System.out.println("Conexão fechada");
+                System.out.println("\nConexão fechada.\n");
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao fechar conexão: " + e.getMessage());
+            System.out.println("\nErro ao fechar conexão: " + e.getMessage());
         }
     }
 }

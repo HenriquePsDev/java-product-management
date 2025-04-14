@@ -106,6 +106,32 @@ public class ProdutoDAO {
             System.out.println("Erro ao deletar produto: " + e.getMessage());
         }
     }
+
+    public Produto buscarProdutoPorId(int id) throws SQLException {
+        String sql = "SELECT * FROM produto WHERE id = ?";
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+    
+            stmt.setInt(1, id);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    Produto produto = new Produto(
+                        rs.getString("nome"),
+                        rs.getString("descricao"),
+                        rs.getDouble("preco"),
+                        rs.getInt("quantidade")
+                    );
+                    produto.setId(rs.getInt("id"));
+                    produto.setCodigo(rs.getString("codigo"));
+                    return produto;
+                } else {
+                    return null; // Produto não encontrado
+                }
+            }
+        }
+    }
+    
+    
     
     
 }
