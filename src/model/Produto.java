@@ -9,8 +9,7 @@ public class Produto {
     private int quantidade;
 
     // Construtor com parâmetros
-    public Produto(String codigo, String nome, String descricao, double preco, int quantidade) {
-        this.codigo = codigo;
+    public Produto(String nome, String descricao, double preco, int quantidade) {
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;

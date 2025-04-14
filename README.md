@@ -18,3 +18,26 @@ Desenvolver um sistema simples em **Java** que permita gerenciar produtos em um 
 - 📡 **JDBC** (Java Database Connectivity)
 
 ## 📁 Estrutura do Projeto
+- **src**:  
+  - `App.java`  
+  - **model**:  
+    - `Produto.java`  
+  - **dao**:  
+    - `ProdutoDAO.java`  
+  - **database**:  
+    - `Conexao.java`  
+    - `script_criacao_banco.sql`  
+- **lib**:  
+  - `mysql-connector-java-9.2.0.jar`  
+- **bin**: arquivos compilados  
+- `README.md`
+
+## ▶️ Como Executar
+1. **Compile**:
+   ```bash
+   javac -d bin -cp "lib/mysql-connector-j-9.2.0.jar" src/database/Conexao.java src/model/Produto.java src/dao/ProdutoDAO.java src/App.java
+
+2. **Execute**:
+   ```bash
+   java -cp "bin;lib/mysql-connector-j-9.2.0.jar" App
+
