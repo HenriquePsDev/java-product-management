@@ -101,7 +101,7 @@ public class App {
                     System.out.println("Digite o id do produto que deseja deletar: ");
                     id = scanner.nextInt();
                     dao.deletarProduto(id);
-                    System.out.println("Produto deletado com sucesso!");
+                    System.out.printf("Produto deletado com sucesso!");
                     break;
 
                     case 5:
